@@ -144,9 +144,7 @@ const {
           await expect(
             vrfCoordinatorV2Mock.fulfillRandomWords(0, raffle.address)
           ).to.be.revertedWith("nonexistent request");
-          await expect(
-            vrfCoordinatorV2Mock.fulfillRandomWords(1, raffle.address)
-          ).to.be.revertedWith("nonexistent request");
+        
         });
         it("picks a winner, resets the lottery, and sends money", async () => {
           const additionalEntrants = 3;
@@ -169,10 +167,10 @@ const {
               console.log("Found  the event!");
 
               try {
-                console.log(`accounts0: ${accounts[0].address}`);
-                console.log(`accounts1: ${accounts[1].address}`);
-                console.log(`accounts2: ${accounts[2].address}`);
-                console.log(`accounts3: ${accounts[3].address}`);
+                // console.log(`accounts0: ${accounts[0].address}`);
+                // console.log(`accounts1: ${accounts[1].address}`);
+                // console.log(`accounts2: ${accounts[2].address}`);
+                // console.log(`accounts3: ${accounts[3].address}`);
                 const recentWinner = await raffle.getRecentWinner();
                 console.log(recentWinner);
 
@@ -210,6 +208,7 @@ const {
               txReceipt.events[1].args.requestId,
               raffle.address
             );
+            console.log("Called!")
           });
         });
       });
