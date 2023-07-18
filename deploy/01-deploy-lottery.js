@@ -71,9 +71,11 @@ log("----------------------------------------------------")
     }
   
 }
-// if(chainId == 31337) {
-
-// }
+    // Ensure the Raffle contract is a valid consumer of the VRFCoordinatorV2Mock contract.
+    if (developmentChains.includes(network.name)) {
+      const vrfCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock")
+      await vrfCoordinatorV2Mock.addConsumer(subscriptionId, Raffle.address)
+  }
   if (
     !developmentChains.includes(network.name) &&
     process.env.ETHERSCAN_API_KEY
@@ -82,6 +84,10 @@ log("----------------------------------------------------")
     await verify(Raffle.address, args);
   }
   log("##################################################");
+  log("Enter lottery with command:")
+  const networkName = network.name == "hardhat" ? "localhost" : network.name
+  log(`npx hardhat run Scripts/enterRaffle.js --network ${networkName}`)
+  log("----------------------------------------------------")
   console.log("Done")
 }
 module.exports.tags = ["all", "raffle"];
