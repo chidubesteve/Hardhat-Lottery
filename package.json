@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "yarn hardhat test",
-    "test-staging": "yarn hardhat test --network sepolia",
-    "lint": "yarn solhint 'contracts/*.sol'",
-    "lint:fix": "yarn solhint 'contracts/**/*.sol' --fix",
-    "format": "yarn prettier --write .",
-    "coverage": "yarn hardhat coverage"
+    "test": "npx hardhat test",
+    "test-staging": "npx hardhat test --network sepolia",
+    "lint": "npx solhint 'contracts/*.sol'",
+    "lint:fix": "npx solhint 'contracts/**/*.sol' --fix",
+    "format": "npx prettier --write .",
+    "coverage": "npx hardhat coverage"
   },
   "license": "MIT",
   "devDependencies": {
